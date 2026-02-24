@@ -140,19 +140,20 @@ export default function ProjectCard({ project, index, isInView }) {
                         transition={{ duration: 0.35 }}
                       >
                         {slides[slideIndex].type === 'video' ? (
-                          <iframe
+                          <video
+                            key={slides[slideIndex].url}
+                            className="w-full h-full object-cover scale-110"
                             src={slides[slideIndex].url}
-                            className="w-full h-full"
-                            style={{ minHeight: '220px' }}
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                            title={`${project.title} video`}
+                            autoPlay
+                            muted
+                            loop
+                            preload="metadata"
                           />
                         ) : (
                           <img
                             src={slides[slideIndex].url}
                             alt={slides[slideIndex].caption || project.title}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-contain"
                             style={{ minHeight: '220px' }}
                           />
                         )}

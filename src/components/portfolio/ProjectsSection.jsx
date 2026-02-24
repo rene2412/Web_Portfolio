@@ -6,10 +6,10 @@ import ProjectCard from './ProjectCard';
 const projects = [
   {
     id: 1,
-    title: "Linux Lab",
+    title: "Linux-Lab",
     description: "A full web application that allows users to learn and practice the Linux command line in a simulated environment. Features a custom bash shell, secure auth, email system, and REST APIs. Currently at 50+ users.",
-    tags: ["PHP", "Python", "MySQL", "Apache", "Bash", "Digital Ocean"],
-    year: "2024",
+    tags: ["PHP", "Python", "Bash", "React", "MySQL", "Apache", "Bash", "Digital Ocean"],
+    year: "2025",
     link: "https://linux-lab.live",
     linkLabel: "Visit Site",
     media: [
@@ -24,8 +24,8 @@ const projects = [
     id: 3,
     title: "Super Mario Bros Clone (C++)",
     description: "A C++ Super Mario Bros clone using the Raylib graphics API with collision detection, object management, and multi-threaded performance optimizations. Showcases polymorphism, smart pointers, and static texture loading.",
-    tags: ["C++", "Raylib", "Multi-Threading", "Git"],
-    year: "2023",
+    tags: ["C++", "Raylib", "Multi-Threading", "Linux", "Git"],
+    year: "2025",
     link: "https://www.youtube.com/@renehernandez6562",
     linkLabel: "Watch Demo",
     media: [
@@ -37,7 +37,7 @@ const projects = [
     title: "Online Blackjack (C++)",
     description: "A complete blackjack game engine in C++ handling player/dealer logic, split hands, bets, and card management. Implements OOP, polymorphism, smart pointers, web-sockets, mutexes, HTTP controllers, and REST APIs.",
     tags: ["C++", "Dragon Web Framework", "Linux", "Git"],
-    year: "2024",
+    year: "2025",
     link: "https://www.youtube.com/@renehernandez6562",
     linkLabel: "Watch Demo",
     media: [
