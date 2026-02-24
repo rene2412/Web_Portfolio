@@ -29,7 +29,7 @@ const projects = [
     link: "https://www.youtube.com/@renehernandez6562",
     linkLabel: "Watch Demo",
     media: [
-       { type: 'video', url: '/marioGamePlay.mov' }
+       { type: 'video', url: '/marioGamePlay.mp4' }
     ]
   },
   {
