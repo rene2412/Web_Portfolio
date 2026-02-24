@@ -84,7 +84,7 @@ export default function ProjectCard({ project, index, isInView }) {
             transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="overflow-hidden relative z-10"
           >
-            <div className="pb-10 grid md:grid-cols-2 gap-8 md:gap-12">
+            <div className="pb-10 grid md:grid-cols-2 gap-8 md:gap-12 items-stretch">
               {/* Description + links */}
               <div className="flex flex-col justify-between gap-6">
                 {/* Mobile tags */}
@@ -127,7 +127,7 @@ export default function ProjectCard({ project, index, isInView }) {
               </div>
 
               {/* Media slideshow */}
-              <div className="relative rounded overflow-hidden bg-black/5 min-h-[220px] md:min-h-[260px] flex items-center justify-center">
+              <div className="relative w-full h-full min-h-[260px] rounded overflow-hidden bg-black/5">
                 {hasMedia ? (
                   <>
                     <AnimatePresence mode="wait">
@@ -142,7 +142,7 @@ export default function ProjectCard({ project, index, isInView }) {
                         {slides[slideIndex].type === 'video' ? (
                           <video
                             key={slides[slideIndex].url}
-                            className="w-full h-full object-cover scale-110"
+                            className="w-full h-full object-cover "
                             src={slides[slideIndex].url}
                             autoPlay
                             muted
