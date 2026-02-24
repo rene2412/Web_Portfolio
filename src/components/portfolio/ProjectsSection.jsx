@@ -13,10 +13,10 @@ const projects = [
     link: "https://linux-lab.live",
     linkLabel: "Visit Site",
     media: [
-         { type: 'image', url: '/public/wc.png' },
-         { type: 'image', url: '/public/dashboard.png'},
-         { type: 'image', url: '/public/curl.png'},
-         { type: 'image', url: '/public/networking.png' }
+         { type: 'image', url: '/wc.png' },
+         { type: 'image', url: '/dashboard.png'},
+         { type: 'image', url: '/curl.png'},
+         { type: 'image', url: '/networking.png' }
     ]
   },
   {
@@ -28,7 +28,7 @@ const projects = [
     link: "https://www.youtube.com/@renehernandez6562",
     linkLabel: "Watch Demo",
     media: [
-       { type: 'video', url: '/public/marioGamePlay.mp4' }
+       { type: 'video', url: '/marioGamePlay.mp4' }
     ]
   },
   {
@@ -40,7 +40,7 @@ const projects = [
     link: "https://www.youtube.com/@renehernandez6562",
     linkLabel: "Watch Demo",
     media: [
-       { type: 'video', url: '/public/blackjackTeaser.mp4' }
+       { type: 'video', url: '/blackjackTeaser.mp4' }
     ]
   }
 ];
