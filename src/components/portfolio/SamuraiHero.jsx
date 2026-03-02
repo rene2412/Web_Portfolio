@@ -90,10 +90,6 @@ export default function SamuraiHero() {
             style={{ originX: 0 }}
           />
 
-          <p className="text-white/40 text-sm leading-relaxed max-w-xs hidden sm:block">
-            Precision. Discipline. Execution.<br />
-            Building software that endures.
-          </p>
 
           <div className="flex gap-6 mt-8 md:mt-10">
             <a href="#projects" className="text-white text-sm tracking-[0.2em] uppercase border-b border-white pb-1 hover:text-white/60 hover:border-white/60 transition-colors duration-300">

@@ -34,13 +34,13 @@ const projects = [
   {
     id: 2,
     title: "Online Blackjack (C++)",
-    description: "A complete blackjack game engine in C++ handling player/dealer logic, split hands, bets, and card management. Implements OOP, polymorphism, smart pointers, web-sockets, mutexes, HTTP controllers, and REST APIs.",
+    description: "A complete blackjack game engine in C++ handling player/dealer logic, split hands, bets, insurance, double down, and card management. Implements object-oriented programming, polymorphism, smart pointers, web-sockets, mutexes, HTTP controllers, and REST APIs.",
     tags: ["C++", "Dragon Web Framework", "Linux", "Git"],
     year: "2025",
-    link: "https://www.youtube.com/@renehernandez6562",
-    linkLabel: "Watch Demo",
+    link: "https://onlineblackjack-production.up.railway.app",
+    linkLabel: "Play",
     media: [
-       { type: 'video', url: '/blackjackTeaser.mp4' }
+       { type: 'image', url: '/blackJackGame.png' }
     ]
   }
 ];
