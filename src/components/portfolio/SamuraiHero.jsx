@@ -1,51 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
-import { base44 } from '@/api/base44Client';
 import SlashEffect from './SlashEffect';
+import CherryBlossom from './CherryBlossom';
+
+const SAMURAI_IDLE = 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699bcabea901e12dc3cc3b26/a4e35fb52_generated_image.png';
+const SAMURAI_DRAWN = 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699bcabea901e12dc3cc3b26/d8afb91a0_generated_image.png';
 
 export default function SamuraiHero() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const [samuraiImg, setSamuraiImg] = useState("https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699bcabea901e12dc3cc3b26/a4e35fb52_generated_image.png");
-  const [samuraiDrawnImg, setSamuraiDrawnImg] = useState("https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699bcabea901e12dc3cc3b26/d8afb91a0_generated_image.png");
-  const [imgLoading, setImgLoading] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 500);
-
-    // Generate both samurai states
-    const cachedIdle = localStorage.getItem('samurai_idle_url');
-      const cachedDrawn = localStorage.getItem('samurai_drawn_url');
-
-      if (cachedIdle && cachedDrawn) {
-        setSamuraiImg(cachedIdle);
-        setSamuraiDrawnImg(cachedDrawn);
-        setImgLoading(false);
-      } else {
-        Promise.all([
-          base44.integrations.Core.GenerateImage({
-            prompt: `Dramatic pure black silhouette of a lone Japanese ronin samurai, perfect strict side profile facing left. He wears an extremely wide, almost exaggerated conical straw kasa hat — the hat brim extends far out to both sides, nearly as wide as his shoulders, with a deep dramatic cone shape and visible woven texture in silhouette. The hat casts a strong shadow over his bowed head. Long flowing kimono and wide hakama pants drape to the ground. Both hands rest calmly on the hilt of his katana at his hip, blade sheathed — daisho pair at waist. Posture: still, coiled, dangerous — like a predator at rest. Pure ink black silhouette on pure white background. Zero gray. Hard edges. Flat vector graphic style. High contrast graphic novel aesthetic.`
-          }),
-          base44.integrations.Core.GenerateImage({
-            prompt: `Dramatic pure black silhouette of a lone Japanese ronin samurai, perfect strict side profile facing left. He wears an extremely wide, almost exaggerated conical straw kasa hat — the hat brim extends far out to both sides, nearly as wide as his shoulders, with a deep dramatic cone shape — EXACT SAME hat size and shape as the idle pose. Long kimono and wide hakama. He is in a fierce iai sword draw — body pivoting, right arm sweeping the katana upward in a powerful diagonal slash above his head, left hand releasing the scabbard. The enormous hat stays on at the exact same size, not tilted. Explosive violent energy frozen in a single frame. Pure ink black silhouette on pure white background. Zero gray. Hard edges. Flat vector graphic style. High contrast graphic novel aesthetic.`
-          })
-        ]).then(([idle, drawn]) => {
-          setSamuraiImg(idle.url);
-          setSamuraiDrawnImg(drawn.url);
-          localStorage.setItem('samurai_idle_url', idle.url);
-          localStorage.setItem('samurai_drawn_url', drawn.url);
-          setImgLoading(false);
-        }).catch(() => {
-          setImgLoading(false);
-        });
-      }
-
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <section className="relative h-screen w-full bg-black overflow-hidden flex flex-col items-center justify-center">
+
+      {/* Cherry blossom petals */}
+      <CherryBlossom />
+
+
 
       {/* Subtle vertical line */}
       <motion.div
@@ -73,23 +50,23 @@ export default function SamuraiHero() {
           animate={isLoaded ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 1, delay: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
-          <p className="text-white/30 text-[10px] sm:text-xs tracking-[0.3em] sm:tracking-[0.5em] uppercase mb-6">Rene Hernandez — Back End Engineer</p>
-
-          <h1 className="text-white font-bold leading-none tracking-tighter"
-            style={{ fontSize: 'clamp(2.2rem, 7vw, 7rem)' }}>
-            CODE.<br />
-            <span className="text-white/20">CRAFT.</span><br />
-            AMBITION.
+          <h1 className="text-white leading-none"
+            style={{ fontSize: 'clamp(2.8rem, 8vw, 8rem)', fontFamily: "'Cinzel', serif", fontWeight: 600, letterSpacing: '0.05em' }}>
+            Rene Hernandez
           </h1>
 
           <motion.div
-            className="w-16 h-px bg-white/40 my-8"
+            className="w-16 h-px bg-white/40 my-6"
             initial={{ scaleX: 0 }}
             animate={isLoaded ? { scaleX: 1 } : {}}
             transition={{ duration: 0.8, delay: 1.5 }}
             style={{ originX: 0 }}
           />
 
+          <p className="text-white/50 tracking-[0.4em] uppercase"
+            style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(0.9rem, 1.5vw, 1.2rem)', fontWeight: 300 }}>
+            Backend Engineer
+          </p>
 
           <div className="flex gap-6 mt-8 md:mt-10">
             <a href="#projects" className="text-white text-sm tracking-[0.2em] uppercase border-b border-white pb-1 hover:text-white/60 hover:border-white/60 transition-colors duration-300">
@@ -111,45 +88,33 @@ export default function SamuraiHero() {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          {imgLoading ? (
-            /* Skeleton while loading */
-            <div className="w-full h-full flex items-end justify-center pb-4">
-              <motion.div
-                className="w-3/5 h-4/5 bg-white/5 rounded"
-                animate={{ opacity: [0.3, 0.6, 0.3] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              />
-            </div>
-          ) : (
-            <>
-              {/* Idle samurai */}
-              <motion.img
-                src={samuraiImg}
-                alt="Samurai"
-                className="absolute bottom-0 left-1/2 -translate-x-1/2 h-full object-contain object-bottom select-none"
-                style={{ filter: 'invert(1)', mixBlendMode: 'screen' }}
-                animate={{ opacity: isHovered ? 0 : 1 }}
-                transition={{ duration: 0.1, delay: isHovered ? 0.12 : 0 }}
-                draggable={false}
-              />
+          <>
+            {/* Idle samurai */}
+            <motion.img
+              src={SAMURAI_IDLE}
+              alt="Samurai"
+              className="absolute bottom-0 left-1/2 -translate-x-1/2 h-full object-contain object-bottom select-none"
+              style={{ filter: 'invert(1)', mixBlendMode: 'screen' }}
+              animate={{ opacity: isHovered ? 0 : 1 }}
+              transition={{ duration: 0.1, delay: isHovered ? 0.12 : 0 }}
+              draggable={false}
+            />
 
-              {/* Sword-drawn samurai */}
-              <motion.img
-                src={samuraiDrawnImg}
-                alt="Samurai drawing sword"
-                className="absolute bottom-0 left-1/2 -translate-x-1/2 h-full object-contain object-bottom select-none"
-                style={{ filter: 'invert(1)', mixBlendMode: 'screen' }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: isHovered ? 1 : 0 }}
-                transition={{ duration: 0.1, delay: isHovered ? 0.12 : 0 }}
-                draggable={false}
-              />
+            {/* Sword-drawn samurai */}
+            <motion.img
+              src={SAMURAI_DRAWN}
+              alt="Samurai drawing sword"
+              className="absolute bottom-0 left-1/2 -translate-x-1/2 h-full object-contain object-bottom select-none"
+              style={{ filter: 'invert(1)', mixBlendMode: 'screen' }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: isHovered ? 1 : 0 }}
+              transition={{ duration: 0.1, delay: isHovered ? 0.12 : 0 }}
+              draggable={false}
+            />
 
-              {/* Double slash effect */}
-              <SlashEffect isHovered={isHovered} />
-
-            </>
-          )}
+            {/* Double slash effect */}
+            <SlashEffect isHovered={isHovered} />
+          </>
 
 
         </motion.div>
