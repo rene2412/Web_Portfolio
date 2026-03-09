@@ -45,11 +45,9 @@ export default function CherryBlossom() {
       ctx.rotate((p.rotation * Math.PI) / 180);
       ctx.globalAlpha = p.opacity;
 
-      // Petal shape
+      // Petal shape - elongated oval leaf
       ctx.beginPath();
-      ctx.moveTo(0, 0);
-      ctx.bezierCurveTo(p.size * 0.5, -p.size * 0.8, p.size, -p.size * 0.5, p.size * 0.5, 0);
-      ctx.bezierCurveTo(p.size, p.size * 0.5, p.size * 0.5, p.size * 0.8, 0, 0);
+      ctx.ellipse(0, 0, p.size * 0.3, p.size * 0.7, 0, 0, Math.PI * 2);
 
       // Gradient fill
       const grad = ctx.createRadialGradient(0, 0, 0, 0, 0, p.size);

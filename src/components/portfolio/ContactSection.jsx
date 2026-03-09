@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Send } from 'lucide-react';
+import { Send, Linkedin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -48,7 +48,7 @@ export default function ContactSection() {
           </h2>
           <div className="w-24 h-px bg-white mt-6" />
           <p className="text-white/50 mt-6 max-w-xl">
-            Every great partnership begins with a conversation. Let's discuss how we can create something extraordinary together.
+            Every great partnership begins with a conversation. Let's discuss how we can create something special together.
           </p>
         </motion.div>
 
@@ -68,6 +68,21 @@ export default function ContactSection() {
                 className="text-xl md:text-2xl lg:text-3xl text-white font-light hover:text-white/70 transition-colors duration-300 break-all"
               >
                 hrene2412@gmail.com
+              </a>
+            </div>
+
+            {/* LinkedIn */}
+            <div>
+              <p className="text-white/40 text-sm tracking-[0.2em] uppercase mb-4">LinkedIn</p>
+              <a
+                href="https://www.linkedin.com/in/rene-hernandez-b2b42223b/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 text-white/70 hover:text-white transition-colors duration-300 group"
+              >
+                <div className="w-10 h-10 border border-white/20 group-hover:border-white/60 flex items-center justify-center transition-colors duration-300">
+                  <Linkedin className="w-5 h-5" />
+                </div>
               </a>
             </div>
 

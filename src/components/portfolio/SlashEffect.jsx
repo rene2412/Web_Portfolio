@@ -68,8 +68,8 @@ export default function SlashEffect({ isHovered }) {
           style={{ zIndex: 20 }}
         >
           <svg viewBox="0 0 400 600" className="w-full h-full" fill="none" overflow="visible">
-            {/* Single upward slash */}
-            <Slash x1={60} y1={380} x2={350} y2={80} delay={0.15} />
+            {/* Single upward slash - 45 degree following sword */}
+            <Slash x1={320} y1={450} x2={60} y2={190} delay={0.15} />
           </svg>
         </motion.div>
       )}
