@@ -35,7 +35,7 @@ const projects = [
     id: 2,
     title: "Online Blackjack (C++)",
     description: "A complete blackjack game engine in C++ handling player/dealer logic, split hands, bets, insurance, double down, and card management. Implements object-oriented programming, polymorphism, smart pointers, web-sockets, mutexes, HTTP controllers, and REST APIs.",
-    tags: ["C++", "Dragon Web Framework", "Linux", "Git"],
+    tags: ["C++", "Drogon Web Framework", "Linux", "Git"],
     year: "2025",
     link: "https://onlineblackjack-production.up.railway.app",
     linkLabel: "Play",
