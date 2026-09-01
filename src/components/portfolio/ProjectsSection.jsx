@@ -7,7 +7,7 @@ const projects = [
   {
     id: 1,
     title: "Linux-Lab",
-    description: "A full web application that allows users to learn and practice the Linux command line in a simulated environment. Features a custom bash shell, secure auth, email system, and REST APIs. Currently at 50+ users.",
+    description: "A full web application that allows users to learn and practice the Linux command line in a simulated environment. Features a custom bash shell, secure auth, email system, and REST APIs. Currently at 100+ users.",
     tags: ["PHP", "Python", "Bash", "React", "MySQL", "Git", "Apache", "Digital Ocean"],
     year: "2025",
     link: "https://linux-lab.live",

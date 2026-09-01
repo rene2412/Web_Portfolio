@@ -62,7 +62,7 @@ export default function SkillsSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <span className="text-white/40 text-sm tracking-[0.4em] uppercase">02</span>
+          <span className="text-white/40 text-sm tracking-[0.4em] uppercase">04</span>
           <h2 className="text-white text-5xl md:text-7xl font-light tracking-tight mt-4">
             Skills
           </h2>

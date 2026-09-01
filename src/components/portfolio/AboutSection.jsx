@@ -31,7 +31,7 @@ export default function AboutSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <p className="text-black/80 text-xl md:text-2xl font-light leading-relaxed mb-4">
-              Hello, I'm Rene — an aspiring Software Engineer with a focus in backend development and C++.
+              Hello I'm Rene, an aspiring Software Engineer with a focus in backend development and C++.
             </p>
             <p className="text-black/50 leading-relaxed">
               Take a look at some projects I have built.
