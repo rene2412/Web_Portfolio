@@ -4,12 +4,12 @@ import { ChevronDown } from 'lucide-react';
 import SlashEffect from './SlashEffect';
 import CherryBlossom from './CherryBlossom';
 
-const SAMURAI_IDLE = 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699bcabea901e12dc3cc3b26/a4e35fb52_generated_image.png';
-const SAMURAI_DRAWN = 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/699bcabea901e12dc3cc3b26/d8afb91a0_generated_image.png';
+const SAMURAI_IDLE = 'https://media.base44.com/images/public/6a954f339c3a6d1fc592dd0e/96f3ada4e_generated_image.png';
+const SAMURAI_DRAWN = 'https://media.base44.com/images/public/6a954f339c3a6d1fc592dd0e/71512fd66_generated_image.png';
 
 export default function SamuraiHero() {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
+  const [isSlashing, setIsSlashing] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 500);
@@ -21,8 +21,6 @@ export default function SamuraiHero() {
 
       {/* Cherry blossom petals */}
       <CherryBlossom />
-
-
 
       {/* Subtle vertical line */}
       <motion.div
@@ -36,7 +34,7 @@ export default function SamuraiHero() {
       <motion.div
         className="absolute bottom-[20%] left-1/2 -translate-x-1/2 w-64 h-8 rounded-full"
         style={{ background: 'radial-gradient(ellipse, rgba(255,255,255,0.08) 0%, transparent 80%)' }}
-        animate={isHovered ? { opacity: 1, scaleX: 1.3 } : { opacity: 0.5, scaleX: 1 }}
+        animate={isSlashing ? { opacity: 1, scaleX: 1.3 } : { opacity: 0.5, scaleX: 1 }}
         transition={{ duration: 0.6 }}
       />
 
@@ -81,39 +79,44 @@ export default function SamuraiHero() {
         {/* Samurai - center/right */}
         <motion.div
           className="relative order-2 md:order-2 flex items-end justify-center flex-shrink-0"
-          style={{ height: '50vh', width: 'clamp(200px, 60vw, 420px)' }}
+          style={{ cursor: 'pointer', height: '50vh', width: 'clamp(200px, 60vw, 420px)' }}
           initial={{ opacity: 0, y: 80 }}
           animate={isLoaded ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1.4, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.3 }}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
+          onClick={() => setIsSlashing((s) => !s)}
+          onMouseEnter={() => setIsSlashing(true)}
+          onMouseLeave={() => setIsSlashing(false)}
         >
           <>
             {/* Idle samurai */}
             <motion.img
               src={SAMURAI_IDLE}
-              alt="Samurai"
+              alt="Samurai idle"
               className="absolute bottom-0 left-1/2 -translate-x-1/2 h-full object-contain object-bottom select-none"
               style={{ filter: 'invert(1)', mixBlendMode: 'screen' }}
-              animate={{ opacity: isHovered ? 0 : 1 }}
-              transition={{ duration: 0.1, delay: isHovered ? 0.12 : 0 }}
+              animate={{ opacity: isSlashing ? 0 : 1 }}
+              transition={{ duration: 0.1, delay: isSlashing ? 0.12 : 0 }}
               draggable={false}
             />
 
-            {/* Sword-drawn samurai */}
-            <motion.img
-              src={SAMURAI_DRAWN}
-              alt="Samurai drawing sword"
-              className="absolute bottom-0 left-1/2 -translate-x-1/2 h-full object-contain object-bottom select-none"
-              style={{ filter: 'invert(1)', mixBlendMode: 'screen' }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: isHovered ? 1 : 0 }}
-              transition={{ duration: 0.1, delay: isHovered ? 0.12 : 0 }}
-              draggable={false}
-            />
+            {/* Sword-drawn samurai — source faces left; scaled up via plain wrapper to match the idle figure size */}
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-full pointer-events-none">
+              <div className="h-full" style={{ transform: 'scale(1.35)', transformOrigin: 'bottom center' }}>
+                <motion.img
+                  src={SAMURAI_DRAWN}
+                  alt="Samurai slashing"
+                  className="h-full object-contain object-bottom select-none"
+                  style={{ filter: 'invert(1)', mixBlendMode: 'screen' }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: isSlashing ? 1 : 0 }}
+                  transition={{ duration: 0.1, delay: isSlashing ? 0.12 : 0 }}
+                  draggable={false}
+                />
+              </div>
+            </div>
 
             {/* Double slash effect */}
-            <SlashEffect isHovered={isHovered} />
+            <SlashEffect isHovered={isSlashing} />
           </>
 
 
